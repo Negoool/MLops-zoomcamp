@@ -2,9 +2,8 @@
 
 
 2. Playground example. Estimate the taxi ride time. 
-There is a similar Kaggle competetion  https://www.kaggle.com/competitions/nyc-taxi-trip-duration/overview
-"New York City Taxi Trip Duration" based on latitude and longitude
-    - How to handle *categorical features*. Specifically for:
+There is a similar Kaggle competetion  [https://www.kaggle.com/competitions/nyc-taxi-trip-duration/overview](New York City Taxi Trip Duration) based on latitude and longitude
+    - How to handle **categorical features**. Specifically for:
         - If we are going to have unseen values during production.
         - If onehot encoding leads to a very sparce feature vector.
         - If there is a relationship between features and we might want to use that.
