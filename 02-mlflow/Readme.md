@@ -13,7 +13,7 @@ Better way:
     Mlflow. 
     
 
-### what should be tracked for an experiment?
+### what should be tracked for an experiment (minimum)?
     - source code  (version of the code)
     - data 
     - hyperparameter
@@ -21,8 +21,8 @@ Better way:
     - metrics
     - model
 
-you can use mlflow to log parameters, metrics, artifacts, models, tags and mlflow itself will save commit id, metadata for each run. 
-A little bit of mlflow concepts, _experiment_ is an experminet and you can have different _runs_ (e.g.  trying different HP) under one experiment.
+you can use mlflow to log parameters, metrics, artifacts, models, tags and mlflow itself will save commit id, source script and some more. 
+A little bit of mlflow concepts, _experiment_ is an experminet for example hyper-parameter-taxi-newyork and you can have different _runs_ (e.g.  trying different HP) under one experiment.
 
 
  # Model managements:
@@ -50,5 +50,17 @@ which to choose? depends on the scenario. For example
 - If you are a team of data scientists and sw, Backend store: postgres, Artifact store: google cloud server, tracking server: a gcp.
 
 
-###  Final word
-Tool is not the answer. **Needs** for a spacific project matters most. So first identify those needs in a project and then looks wether there is sth out there that can address those needs.
+###  !
+Tool is not the answer. **Needs** for a spacific project matters most. So first identify those needs in a project and then looks whether there is sth out there that can address those needs.
+
+### What is there in the code folder?
+- `preprocess.py` data
+- `train.py` with autologging, In a general setting you have to call mlflow.log... . But for some of the libraries, like sklearn, mlflow offer autologging. 
+- `hpo.py` Huperparameter tunning using hyperopt while traking runs using mlflow.
+- `register_model.py` use mlflowclient to search runs in an experiment that fit the specified criteria and sort them. here get the top 5 models based on validation metric and register the best one.
+
+
+cool to search trough runs programatically, makes it automatic.
+runs can get clutter, It can be beneficial to add tags for runs, later you can filter the results based on that.
+you can also add text descrioption to your registered model, through ui or programatically.
+one bad thing about mlflow, it can not track uncommited changes. so remember to commit before running experiments. otherwise the commit id does not match the code you used for running experiments.
