@@ -23,6 +23,7 @@ Better way:
 
 you can use mlflow to log parameters, metrics, artifacts, models, tags and mlflow itself will save commit id, source script and some more. 
 A little bit of mlflow concepts, _experiment_ is an experminet for example hyper-parameter-taxi-newyork and you can have different _runs_ (e.g.  trying different HP) under one experiment.
+the default expermein has the id of 0 and as created, they gets incremeted.
 
 
  # Model managements:
@@ -36,7 +37,7 @@ You can use model registery. when you are happy with the models, you can promote
 You can register models through UI or using the mlflow client. For example as in the homework, you can run a hyperparameter tunning, get the n top model (based on your performance metric) and register them through mlflow client. Later you can compare these models more, for example based on run time, change its stage to production.
 
 
-### Mlflow configuration
+# Mlflow configuration
 - Backend store: For saving metric, parameters and metadata fo runs.
     - local filesystem
     -  SQLAlchemy compatible database (eg SQLit)
@@ -53,7 +54,9 @@ which to choose? depends on the scenario. For example
 ###  !
 Tool is not the answer. **Needs** for a spacific project matters most. So first identify those needs in a project and then looks whether there is sth out there that can address those needs.
 
-### What is there in the code folder?
+# Homework
+Before running the code, set up the mlflow server `mlflow server --backend-store-uri sqlite:///bk.db --default-artifact-root ./artifacts`
+ What is there in the code folder?
 - `preprocess.py` data
 - `train.py` with autologging, In a general setting you have to call mlflow.log... . But for some of the libraries, like sklearn, mlflow offer autologging. 
 - `hpo.py` Huperparameter tunning using hyperopt while traking runs using mlflow.
