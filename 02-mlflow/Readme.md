@@ -121,5 +121,9 @@ It can be beneficial to add text descrioption to your registered model, through 
 
 one bad thing about mlflow, it can not track uncommited changes. so remember to commit before running experiments. otherwise the commit id does not match the code you used for running  experiments. Also out of the box, it does not track data (there are some workaround for that).
 
+Mlflow has some pther components, like project which I do not know what it does at this time.
+
 Tool is not the answer. **Needs** for a spacific project matters most. So first identify those needs in a project and then looks whether there is sth out there that can address those needs.
+
+Interested to see and example including deployment.
 
