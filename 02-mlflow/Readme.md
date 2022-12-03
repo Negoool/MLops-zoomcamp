@@ -32,9 +32,11 @@ The model is named as "classifier_final" which is obviously never a final one. T
 well! naming folders can work to some extend, model_v1, model_v2. But what is difference between model_v1 and model_v2? (folder naming does not have any model lineage.)
 
 Better way:
-    Mlflow. Model registery
+    Mlflow Model registery. it takes care of versioning, stage changing and lineage.å
 
+<img src="images/model_managment.png" width=400/>
 
+</br>
 When you are happy with the models, you can register them. You can put them in different stages. (stage, production or archive) and move from one stage to another. As you register more model, the version automaticallly gets incremented (versioning). For each registered model the run id is there, which shows you all the information saved during expriment tracking (lineage). 
 
 You can register models through UI or using the mlflow python APIs. For example as in the homework, you can run a hyperparameter tunning, get the n top model (based on your performance metric) and register them through mlflow client. Later you can compare these models more, for example based on run time, change its stage to production.
@@ -121,9 +123,11 @@ It can be beneficial to add text descrioption to your registered model, through 
 
 one bad thing about mlflow, it can not track uncommited changes. so remember to commit before running experiments. otherwise the commit id does not match the code you used for running  experiments. Also out of the box, it does not track data (there are some workaround for that).
 
-Mlflow has some pther components, like project which I do not know what it does at this time.
+In the deployment week, the download a model from registery, based on run id or stage. although at that point they explained that dependence to a mlflow server not ideal, so using mlflow API, they directly downloaded from bucket.
+
+Mlflow has some other components, like project which I do not know what it does at this time.
 
 Tool is not the answer. **Needs** for a spacific project matters most. So first identify those needs in a project and then looks whether there is sth out there that can address those needs.
 
-Interested to see and example including deployment.
+
 
